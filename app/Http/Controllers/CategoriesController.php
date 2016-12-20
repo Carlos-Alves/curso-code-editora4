@@ -29,6 +29,7 @@ class CategoriesController extends Controller
     {
         $search = $request->get('search');
         $categories = $this->repository->paginate(10);
+        //$categories = Category::onlyTrashed()->paginate(10);
         return view('categories.index', compact('categories','search'));
     }
 

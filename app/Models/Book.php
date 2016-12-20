@@ -5,12 +5,16 @@ namespace CodEditora\Models;
 use Bootstrapper\Interfaces\TableInterface;
 use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Traits\TransformableTrait;
 
 class Book extends Model implements TableInterface
 {
     use TransformableTrait;
     use FormAccessible;
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
 
 
     protected $fillable = [
@@ -26,7 +30,7 @@ class Book extends Model implements TableInterface
     }
 
     public function categories(){
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class)->withTrashed();
     }
 
     public function formCategoriesAttribute(){

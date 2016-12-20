@@ -10,7 +10,7 @@
 
         </div>
 
-        @include('layouts._campo-busca', ['nomeDoCampo' => 'Pesquisa por título ou nome do autor'])
+        @include('layouts._campo-busca', ['nomeDoCampo' => 'Pesquisa por título ou nome do autor ou nome de categoria'])
 
         <div class="row">
 
@@ -26,7 +26,7 @@
                            'method' => 'DELETE', 'id' => $deleteForm,'style' => 'display:none']).
                            Form::close();
 
-                   $anchorDestroy = Button::link('Excluir')
+                   $anchorDestroy = Button::link('Enviar para lixeira')
                                        ->asLinkTo($linkDestroy)->addAttributes([
                                            'onclick' => "event.preventDefault();document.getElementById(\"{$deleteForm}\").submit();"
                                        ]);
