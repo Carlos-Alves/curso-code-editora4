@@ -172,6 +172,9 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
 
+        //
+        \CodeEduBook\Providers\CodeEduBookServiceProvider::class,
+
 
 
         /*
@@ -183,7 +186,7 @@ return [
         CodEditora\Providers\EventServiceProvider::class,
         CodEditora\Providers\RouteServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-
+        \Nwidart\Modules\LaravelModulesServiceProvider::class,
         \CodEditora\Providers\RepositoryServiceProvider::class,
 
     ],
@@ -258,6 +261,7 @@ return [
         'Tabbable' => Bootstrapper\Facades\Tabbable::class,
         'Table' => Bootstrapper\Facades\Table::class,
         'Thumbnail' => Bootstrapper\Facades\Thumbnail::class,
+        'Module' => Nwidart\Modules\Facades\Module::class,
 
     ],
 

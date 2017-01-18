@@ -4,6 +4,7 @@ namespace CodEditora\Models;
 
 use Bootstrapper\Interfaces\TableInterface;
 use CodEditora\Models\Livro;
+use CodeEduBook\Models\Book;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

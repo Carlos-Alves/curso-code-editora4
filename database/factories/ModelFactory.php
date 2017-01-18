@@ -23,7 +23,7 @@ $factory->define(\CodEditora\Models\User::class, function (Faker\Generator $fake
     ];
 });
 
-$factory->define(\CodEditora\Models\Category::class, function (Faker\Generator $faker) {
+$factory->define(\CodeEduBook\Models\Category::class, function (Faker\Generator $faker) {
 
     return [
         'name' => ucfirst($faker->unique()->word),
@@ -31,12 +31,12 @@ $factory->define(\CodEditora\Models\Category::class, function (Faker\Generator $
 });
 
 
-$factory->define(\CodEditora\Models\Book::class, function (Faker\Generator $faker) {
+$factory->define(\CodeEduBook\Models\Book::class, function (Faker\Generator $faker) {
 
     $repository1 = app(\CodEditora\Repositories\UserRepository::class);
     $authorId = $repository1->all()->random()->id;
 
-    $repository2 = app(\CodEditora\Repositories\CategoryRepository::class);
+    $repository2 = app(\CodeEduBook\Repositories\CategoryRepository::class);
     $categoryId = $repository2->all()->random()->id;
 
     return [
