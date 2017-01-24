@@ -23,6 +23,7 @@ class CodeEduUserServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+        $this->publishMigrationsAndSeeders();
     }
 
     /**
@@ -32,7 +33,9 @@ class CodeEduUserServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->register(\Jrean\UserVerification\UserVerificationServiceProvider::class);
+        $this->app->register(RepositoryServiceProvider::class);
+        $this->app->register(RouteServiceProvider::class);
     }
 
     /**
@@ -84,6 +87,24 @@ class CodeEduUserServiceProvider extends ServiceProvider
         } else {
             $this->loadTranslationsFrom(__DIR__ .'/../resources/lang', 'codeeduuser');
         }
+    }
+
+    public function publishMigrationsAndSeeders(){
+
+        $sourcePath = __DIR__.'/../database/migrations';
+
+
+        $this->publishes([
+            $sourcePath => database_path('migrations')
+        ], 'migrations');
+
+        $sourcePath = __DIR__.'/../database/seeders';
+
+
+        $this->publishes([
+            $sourcePath => database_path('seeds')
+        ], 'seeders');
+
     }
 
     /**

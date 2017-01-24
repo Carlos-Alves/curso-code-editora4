@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(\CodEditora\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(\CodeEduUser\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -33,7 +33,7 @@ $factory->define(\CodeEduBook\Models\Category::class, function (Faker\Generator 
 
 $factory->define(\CodeEduBook\Models\Book::class, function (Faker\Generator $faker) {
 
-    $repository1 = app(\CodEditora\Repositories\UserRepository::class);
+    $repository1 = app(\CodeEduUser\Repositories\UserRepository::class);
     $authorId = $repository1->all()->random()->id;
 
     $repository2 = app(\CodeEduBook\Repositories\CategoryRepository::class);

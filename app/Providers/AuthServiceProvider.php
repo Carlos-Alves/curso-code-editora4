@@ -4,7 +4,7 @@ namespace CodEditora\Providers;
 
 use CodEditora\Models\Livro;
 
-use CodEditora\Models\User;
+use CodeEduUser\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

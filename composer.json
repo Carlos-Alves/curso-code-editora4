@@ -13,7 +13,8 @@
         "caouecs/laravel-lang": "~3.0",
         "patricktalmadge/bootstrapper": "~5.9.1",
         "prettus/l5-repository": "~2.6.6",
-        "nwidart/laravel-modules": "dev-master"
+        "nwidart/laravel-modules": "dev-master",
+        "jrean/laravel-user-verification": "3.0.17"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -28,7 +29,8 @@
         ],
         "psr-4": {
             "CodEditora\\": "app/",
-            "CodeEduBook\\": "Modules/CodeEduBook/"            
+            "CodeEduBook\\": "Modules/CodeEduBook/",
+            "CodeEduUser\\": "Modules/CodeEduUser/"
         }
     },
     "autoload-dev": {
