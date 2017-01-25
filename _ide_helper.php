@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.29 on 2017-01-18.
+ * Generated for Laravel 5.3.29 on 2017-01-25.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -16030,6 +16030,125 @@ namespace {
          */
         public static function hasMacro($name){
             return \Nwidart\Modules\Repository::hasMacro($name);
+        }
+        
+    }
+
+
+    class UserVerification extends \Jrean\UserVerification\Facades\UserVerification{
+        
+        /**
+         * Generate and save a verification token for the given user.
+         *
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @return bool 
+         * @static 
+         */
+        public static function generate($user){
+            return \Jrean\UserVerification\UserVerification::generate($user);
+        }
+        
+        /**
+         * Send by e-mail a link containing the verification token.
+         *
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @param string $subject
+         * @param string $from
+         * @param string $name
+         * @return bool 
+         * @throws \Jrean\UserVerification\Exceptions\ModelNotCompliantException
+         * @static 
+         */
+        public static function send($user, $subject = null, $from = null, $name = null){
+            return \Jrean\UserVerification\UserVerification::send($user, $subject, $from, $name);
+        }
+        
+        /**
+         * Queue and send by e-mail a link containing the verification token.
+         *
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @param string $subject
+         * @param string $from
+         * @param string $name
+         * @return bool 
+         * @throws \Jrean\UserVerification\Exceptions\ModelNotCompliantException
+         * @static 
+         */
+        public static function sendQueue($user, $subject = null, $from = null, $name = null){
+            return \Jrean\UserVerification\UserVerification::sendQueue($user, $subject, $from, $name);
+        }
+        
+        /**
+         * Queue on the given queue and send by e-mail a link containing the verification token.
+         *
+         * @param string $queue
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @param string $subject
+         * @param string $from
+         * @param string $name
+         * @return bool 
+         * @throws \Jrean\UserVerification\Exceptions\ModelNotCompliantException
+         * @static 
+         */
+        public static function sendQueueOn($queue, $user, $subject = null, $from = null, $name = null){
+            return \Jrean\UserVerification\UserVerification::sendQueueOn($queue, $user, $subject, $from, $name);
+        }
+        
+        /**
+         * Send later by e-mail a link containing the verification token.
+         *
+         * @param int $seconds
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @param string $subject
+         * @param string $from
+         * @param string $name
+         * @return bool 
+         * @throws \Jrean\UserVerification\Exceptions\ModelNotCompliantException
+         * @static 
+         */
+        public static function sendLater($seconds, $user, $subject = null, $from = null, $name = null){
+            return \Jrean\UserVerification\UserVerification::sendLater($seconds, $user, $subject, $from, $name);
+        }
+        
+        /**
+         * Send later on the given queue by e-mail a link containing the verification token.
+         *
+         * @param string $queue
+         * @param int $seconds
+         * @param \Illuminate\Contracts\Auth\Authenticatable $user
+         * @param string $subject
+         * @param string $from
+         * @param string $name
+         * @return bool 
+         * @throws \Jrean\UserVerification\Exceptions\ModelNotCompliantException
+         * @static 
+         */
+        public static function sendLaterOn($queue, $seconds, $user, $subject = null, $from = null, $name = null){
+            return \Jrean\UserVerification\UserVerification::sendLaterOn($queue, $seconds, $user, $subject, $from, $name);
+        }
+        
+        /**
+         * Set the e-mail view name.
+         *
+         * @param string $name
+         * @return \Jrean\UserVerification 
+         * @static 
+         */
+        public static function emailView($name){
+            return \Jrean\UserVerification\UserVerification::emailView($name);
+        }
+        
+        /**
+         * Process the user verification for the given e-mail and token.
+         *
+         * @param string $email
+         * @param string $token
+         * @param string $userTable
+         * @return void 
+         * @static 
+         */
+        public static function process($email, $token, $userTable){
+            \Jrean\UserVerification\UserVerification::process($email, $token, $userTable);
         }
         
     }
