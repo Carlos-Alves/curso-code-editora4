@@ -17,9 +17,7 @@
             {!!
                 Table::withContents($users->items())->striped()
                  ->callback('Ações', function ($filed, $user){
-
                     $linkEdit = route('codeeduuser.users.edit', ['user' => $user->id]);
-
                     $linkDestroy = route('codeeduuser.users.destroy', ['user' => $user->id]);
                     $deleteForm = "delete-form-{$user->id}";
                     $form = Form::open(['route' =>
@@ -31,6 +29,9 @@
                                         ->asLinkTo($linkDestroy)->addAttributes([
                                             'onclick' => "event.preventDefault();document.getElementById(\"{$deleteForm}\").submit();"
                                         ]);
+
+                    $anchorFlag =  '<a title="Não é possível excluir o próprio usuário">Excluir</a>';
+                    $anchorDestroy = $user->id == \Auth::user()->id ? $anchorFlag: $anchorDestroy;
                     return "<ul class=\"list-inline\">".
                                 "<li>".Button::link('Editar')->asLinkTo($linkEdit)."</li>".
                                 "<li>|</li>".
