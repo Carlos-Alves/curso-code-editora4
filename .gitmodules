@@ -1,0 +1,3 @@
+[submodule "codeedubook"]
+	path = codeedubook
+	url = https://github.com/Carlos-Alves/codeedubook.git
