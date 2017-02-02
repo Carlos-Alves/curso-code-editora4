@@ -3,7 +3,6 @@
 namespace CodeEduUser\Models;
 
 use Bootstrapper\Interfaces\TableInterface;
-use CodEditora\Models\Livro;
 use CodeEduBook\Models\Book;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
@@ -87,6 +86,10 @@ class User extends Authenticatable implements TableInterface
         return is_string($role) ?
             $this->roles->contains('name', $role) :
             (boolean) $role->intersect($this->role)->count();
+    }
+
+    public function isAdmin(){
+        return $this->hasRole(config('codeeduuser.acl.role_admin'));
     }
 
 
