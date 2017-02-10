@@ -15,7 +15,10 @@ return [
         'password' => env('USER_PASSWORD', 'secret')
     ],
     'acl' => [
-        'role_admin' => env('ROLE_ADMIN', 'Admin')
+        'role_admin' => env('ROLE_ADMIN', 'Admin'),
+        'controllers_annotations' => [
+            __DIR__ .'/../Http/Controllers'
+        ]
     ]
 
 ];

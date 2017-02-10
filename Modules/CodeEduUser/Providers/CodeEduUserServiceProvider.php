@@ -2,7 +2,17 @@
 
 namespace CodeEduUser\Providers;
 
+use CodeEduUser\Annotations\Mapping\Controller;
+use CodeEduUser\Annotations\PermissionReader;
+use CodeEduUser\Http\Controllers\UsersController;
+use CodeEduUser\Models\Permission;
+use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
+use Doctrine\Common\Annotations\CachedReader;
+use Doctrine\Common\Annotations\Reader;
+use Doctrine\Common\Cache\FilesystemCache;
 use Illuminate\Support\ServiceProvider;
+use Prophecy\Doubler\CachedDoubler;
 
 class CodeEduUserServiceProvider extends ServiceProvider
 {
@@ -24,6 +34,11 @@ class CodeEduUserServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->publishMigrationsAndSeeders();
+
+        /** @var PermissionReader $reader  */
+        $reader = app(PermissionReader::class);
+        //$reader->getPermission(UsersController::class);
+        dd($reader->getPermission(UsersController::class));
     }
 
     /**
@@ -36,6 +51,20 @@ class CodeEduUserServiceProvider extends ServiceProvider
         $this->app->register(\Jrean\UserVerification\UserVerificationServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+        $this->registerAnnotations();
+
+        $this->app->bind(Reader::class, function (){
+            return new CachedReader(
+                new AnnotationReader(),
+                new FilesystemCache(storage_path('framework/cache/doctrine-annotations')),
+                $debug = env('APP_DEBUG')
+            );
+        });
+    }
+
+    protected function registerAnnotations(){
+        $loader = require __DIR__ . '/../../../vendor/autoload.php';
+        AnnotationRegistry::registerLoader([$loader, 'loadClass']);
     }
 
     /**

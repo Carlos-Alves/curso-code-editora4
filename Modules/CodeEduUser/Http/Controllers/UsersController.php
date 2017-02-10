@@ -6,7 +6,14 @@ use CodeEduUser\Http\Requests\UserDeleteRequest;
 use CodeEduUser\Http\Requests\UserRequest;
 use CodeEduUser\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use CodeEduUser\Annotations\Mapping\Controller as ControllerAnnotation;
+use CodeEduUser\Annotations\Mapping\Action as ActionAnnotation;
 
+
+/**
+ * @ControllerAnnotation(name="users-admin", description="Administração de usuários")
+ *
+ */
 class UsersController extends Controller
 {
     /**
@@ -21,7 +28,7 @@ class UsersController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * @ActionAnnotation(name="list", description="Ver listagem de usuários")
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -44,7 +51,7 @@ class UsersController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * @ActionAnnotation(name="list1111", description="Ver listagem de usuários")
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
