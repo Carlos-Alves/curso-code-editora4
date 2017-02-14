@@ -5,6 +5,7 @@ namespace CodeEduUser\Http\Controllers;
 use CodeEduUser\Http\Requests\UserSettingRequest;
 use CodeEduUser\Repositories\UserRepository;
 
+
 class UserSettingsController extends Controller
 {
       /**

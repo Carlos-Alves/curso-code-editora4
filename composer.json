@@ -30,7 +30,7 @@
         ],
         "psr-4": {
             "CodEditora\\": "app/",
-            "CodeEduBook\\": "Modules/CodeEduBook/",
+            "CodeEduBook\\": "Modules/CodeEduBook1/",
             "CodeEduUser\\": "Modules/CodeEduUser/"
         }
     },

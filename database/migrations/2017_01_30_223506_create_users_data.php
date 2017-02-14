@@ -15,13 +15,13 @@ class CreateUsersData extends Migration
     public function up()
     {
         \Illuminate\Database\Eloquent\Model::unguard();
-      User::create([
-           'name' => config('codeeduuser.user_default.name'),
-           'email' => config('codeeduuser.user_default.email'),
-           'password' => bcrypt(config('codeeduuser.user_default.password')),
-           'verified' => true
-       ]);
-      \Illuminate\Database\Eloquent\Model::reguard();
+        User::create([
+            'name' => config('codeeduuser.user_default.name'),
+            'email' => config('codeeduuser.user_default.email'),
+            'password' => bcrypt(config('codeeduuser.user_default.password')),
+            'verified' => true
+        ]);
+        \Illuminate\Database\Eloquent\Model::reguard();
     }
 
     /**

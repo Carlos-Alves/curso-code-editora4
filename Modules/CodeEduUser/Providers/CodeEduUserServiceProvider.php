@@ -38,7 +38,7 @@ class CodeEduUserServiceProvider extends ServiceProvider
         /** @var PermissionReader $reader  */
         $reader = app(PermissionReader::class);
         $reader->getPermission(UsersController::class);
-        //dd($reader->getPermission(UsersController::class));
+       //dd($reader->getPermissions());
     }
 
     /**

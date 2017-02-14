@@ -25,15 +25,16 @@ class PermissionReader{
 
     public function getPermissions()
     {
-        $controllersClass = $this->getControllers();
-        $delared = get_declared_classes();
+        $controllersClasses = $this->getControllers();
+        //dd($controllersClasses);
+        $declared = get_declared_classes();
         $permissions = [];
-        foreach ($delared as $className){
+        foreach ($declared as $className){
             $rc = new \ReflectionClass($className);
-            if (in_array($rc->getFileName(), $controllersClass)){
+            if (in_array($rc->getFileName(), $controllersClasses)){
                 $permission = $this->getPermission($className);
                 if (count($permission)){
-                    $permissions =array_merge($permissions, $permission);
+                    $permissions = array_merge($permissions, $permission);
                 }
             }
         }
@@ -45,7 +46,6 @@ class PermissionReader{
         $rc = new \ReflectionClass($controllerClass);
         /** @var Controller $controllerAnnotation */
         $controllerAnnotation = $this->reader->getClassAnnotation($rc, Controller::class);
-
         $permissions = [];
         if ($controllerAnnotation){
             $permission = [
@@ -53,11 +53,9 @@ class PermissionReader{
                 'description' => $controllerAnnotation->description
             ];
             $rcMethods = $rc->getMethods();
-
             foreach ($rcMethods as $rcMethod){
                 /** @var Action $$actionAnnotation */
                 $actionAnnotation = $this->reader->getMethodAnnotation($rcMethod, Action::class);
-
                 if ($actionAnnotation){
                     $permission['resource_name'] = $actionAnnotation->name;
                     $permission['resource_description'] = $actionAnnotation->description;
@@ -67,15 +65,12 @@ class PermissionReader{
 
         }
         return $permissions;
-
-
     }
 
     private function getControllers(){
         $dirs = config('codeeduuser.acl.controllers_annotations');
-        //dd($dirs);
-        $files=[];
-        foreach ($dirs as $dir){
+         $files=[];
+        foreach ((array)$dirs as $dir){
             foreach (\File::allFiles($dir) as $file){
                 $files[] = $file->getRealPath();
                 require_once $file->getRealPath();
