@@ -2,6 +2,7 @@
 
 namespace CodeEduUser\Providers;
 
+use CodeEduUser\Repositories\RoleRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -22,6 +23,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(\CodeEduUser\Repositories\UserRepository::class, \CodeEduUser\Repositories\UserRepositoryEloquent::class);
         $this->app->bind(\CodeEduUser\Repositories\PermissionRepository::class, \CodeEduUser\Repositories\PermissionRepositoryEloquent::class);
+        $this->app->bind(\CodeEduUser\Repositories\RoleRepository::class, \CodeEduUser\Repositories\RoleRepositoryEloquent::class);
 
     }
 

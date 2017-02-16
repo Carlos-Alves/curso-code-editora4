@@ -7,6 +7,9 @@ Route::group([
 
     Route::group(['prefix' => 'admin', 'middleware' => 'can:user-admin'], function (){
         Route::resource('users', 'UsersController');
+        Route::resource('roles', 'RolesController');
+        Route::get('roles/{role}/permissions', 'RolesController@editPermission')->name('roles.permissions.edit');
+        Route::put('roles/{role}/permissions', 'RolesController@updatePermission')->name('roles.permissions.update');
     });
 
     Route::get('users/settings', 'UserSettingsController@edit')->name('user_settings.edit');
