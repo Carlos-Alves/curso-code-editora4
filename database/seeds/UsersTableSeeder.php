@@ -37,6 +37,10 @@ class UsersTableSeeder extends Seeder
             'name' => 'Carlos Henrique Alves',
         ]);
 
+        $author = factory(\CodeEduUser\Models\User::class, 1)->states('author')->create();
+        $roleAuthor = \CodeEduUser\Models\Role::where('name', config('codeedubook.acl.role_author'))->first();
+        $author->roles()->attach($roleAuthor->id);
+
 
 
     }

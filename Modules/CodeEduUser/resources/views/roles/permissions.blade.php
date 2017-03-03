@@ -10,7 +10,7 @@
         <div class="row">
             {!! Form::open(['route' => ['codeeduuser.roles.permissions.update', $role->id], 'class' => 'form', 'method' => 'PUT']) !!}
 
-           <ul class="listgroup">
+            <ul class="listgroup">
                 @foreach($permissionsGroup as $pg)
                     <li class="list-group-item">
                         <h4 class="list-group-item-heading">
@@ -19,16 +19,17 @@
                         <p class="list-group-item-text">
                         <ul class="list-inline">
                             <?php
-                                $permissionsSubGroup = $permissions->filter(function ($value) use($pg){
-                                    return $value->name == $pg->name;
-                                });
+                            $permissionsSubGroup = $permissions->filter(function ($value) use($pg){
+                                return $value->name == $pg->name;
+                            });
                             ?>
                             @foreach($permissionsSubGroup as $permission)
                                 <li>
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox" name="permissions[]" value="{{ $permission->id }}"
-                                            {{ $role->$permissions->contains('id', $permission->id) ?'checked="checked"':'' }}/> {{$permission->resource_description}}
+                                            {{ $role->permissions->contains('id', $permission->id) ?'checked="checked"':'' }}/>
+                                            {{$permission->resource_description}}
                                         </label>
                                     </div>
                                 </li>
@@ -39,7 +40,6 @@
                     </li>
                 @endforeach
             </ul>
-
 
                 {!! Html::openFormGroup() !!}
                 {!! Button::primary('Salvar')->submit() !!}

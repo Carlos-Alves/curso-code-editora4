@@ -5,7 +5,12 @@ namespace CodeEduBook\Http\Controllers;
 use CodeEduBook\Http\Requests\CategoryRequest;
 use CodeEduBook\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
+use CodeEduUser\Annotations\Mapping as Permission;
 
+/**
+ * @Permission\Controller(name="category-admin", description="Administração de categorias")
+ *
+ */
 class CategoriesController extends Controller
 {
     /**
@@ -20,7 +25,7 @@ class CategoriesController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * @Permission\Action(name="list", description="listar categorias")
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -33,7 +38,7 @@ class CategoriesController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * @Permission\Action(name="store", description="Cadastrar categorias")
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -43,7 +48,7 @@ class CategoriesController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * @Permission\Action(name="store", description="Cadastrar categorias")
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -59,7 +64,7 @@ class CategoriesController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * @Permission\Action(name="update", description="Atualizar categorias")
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -71,7 +76,7 @@ class CategoriesController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * @Permission\Action(name="update", description="Atualizar categorias")
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -86,7 +91,7 @@ class CategoriesController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @Permission\Action(name="destroy", description="Excluir categorias")
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

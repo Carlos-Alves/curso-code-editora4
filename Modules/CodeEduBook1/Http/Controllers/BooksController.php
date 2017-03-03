@@ -6,10 +6,15 @@ use CodeEduBook\Repositories\CategoryRepository;
 use CodeEduBook\Http\Requests\BookCreateRequest;
 use CodeEduBook\Http\Requests\BookUpdateRequest;
 use CodeEduBook\Repositories\BookRepository;
+use CodeEduBook\Criteria\FindByAuthor;
 use Illuminate\Http\Request;
+use CodeEduUser\Annotations\Mapping as Permission;
 
 
-
+/**
+ * @Permission\Controller(name="book-admin", description="Administração de livros")
+ *
+ */
 class BooksController extends Controller
 {
 
@@ -32,13 +37,14 @@ class BooksController extends Controller
     public function __construct(BookRepository $repository, CategoryRepository $categoryRepository)
     {
         $this->repository = $repository;
+        $this->repository->pushCriteria(new FindByAuthor());
         $this->categoryRepository = $categoryRepository;
     }
 
 
     /**
      * Display a listing of the resource.
-     *
+     * @Permission\Action(name="list", description="listar livros")
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -48,6 +54,11 @@ class BooksController extends Controller
         return view('codeedubook::books.index', compact('books', 'search'));
     }
 
+    /**
+     * create.
+     * @Permission\Action(name="store", description="Cadastrar livros")
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         $categories = $this->categoryRepository->lists('name', 'id');
@@ -56,12 +67,11 @@ class BooksController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * @Permission\Action(name="store", description="Cadastrar livros")
      * @param  BookCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-
     public function store(BookCreateRequest $request)
     {
         $data = $request->all();
@@ -74,17 +84,8 @@ class BooksController extends Controller
 
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
      * Show the form for editing the specified resource.
-     *
+     * @Permission\Action(name="update", description="Atualizar livros")
      * @param  int $id
      *
      * @return \Illuminate\Http\Response
@@ -100,7 +101,7 @@ class BooksController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * @Permission\Action(name="update", description="Atualizar livros")
      * @param  \CodeEduBook\Http\Requests\BookUpdateRequest $request
      * @param  string            $id
      *
@@ -118,7 +119,7 @@ class BooksController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @Permission\Action(name="destroy", description="Excluir livros")
      * @param  int $id
      *
      * @return \Illuminate\Http\Response

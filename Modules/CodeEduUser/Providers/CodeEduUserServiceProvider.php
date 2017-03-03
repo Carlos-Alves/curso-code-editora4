@@ -12,6 +12,7 @@ use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Cache\FilesystemCache;
 use Illuminate\Support\ServiceProvider;
+use Jrean\UserVerification\UserVerificationServiceProvider;
 use Prophecy\Doubler\CachedDoubler;
 
 class CodeEduUserServiceProvider extends ServiceProvider
@@ -37,7 +38,7 @@ class CodeEduUserServiceProvider extends ServiceProvider
 
         /** @var PermissionReader $reader  */
         $reader = app(PermissionReader::class);
-        $reader->getPermission(UsersController::class);
+        //$reader->getPermission(UsersController::class);
        //dd($reader->getPermissions());
     }
 
@@ -48,9 +49,10 @@ class CodeEduUserServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(\Jrean\UserVerification\UserVerificationServiceProvider::class);
+        $this->app->register(UserVerificationServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+        $this->app->register(AuthServiceProvider::class);
         $this->registerAnnotations();
 
         $this->app->bind(Reader::class, function (){

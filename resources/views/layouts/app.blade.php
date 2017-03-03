@@ -22,49 +22,58 @@
 </head>
 <body>
     <div id="app">
-
         <?php
             $navbar = Navbar::withBrand(config('app.name'), url('/'))->inverse();
 
             if(Auth::check()){
-                $links = Navigation::links([
+                $arrayLinks = [
+                    [
+                        'link' => route('categories.index'),
+                        'title' => 'Categoria',
+                        'permission' => 'category-admin/list'
+                    ],
+                    [
+                        'Livro',
                         [
-                                'link' => route('categories.index'),
-                                'title' => 'Categoria'
+                            [
+                                'link' => route('books.index'),
+                                'title' => 'Listar',
+                                'permission' => 'book-admin/list'
+
+                            ],
+                            [
+                                'link' => route('trashed.books.index'),
+                                'title' => 'Lixeira',
+                                'permission' => 'book-trashed-admin/list'
+
+                            ]
+                        ],
+                    ],
+                    [
+
+                    'Usuários',
+                    [
+                        [
+                            'link' => route('codeeduuser.users.index'),
+                            'title' => 'Usuários',
+                            'permission' => 'user-admin/list'
+
                         ],
                         [
-                                'Livro',
-                                [
-                                        [
-                                                'link' => route('books.index'),
-                                                'title' => 'Listar'
+                            'link' => route('codeeduuser.roles.index'),
+                            'title' => 'Papel de usuário',
+                            'permission' => 'role-admin/list'
 
-                                        ],
-                                        [
-                                                'link' => route('trashed.books.index'),
-                                                'title' => 'Lixeira'
-
-                                        ]
-                                ],
-                        ],
-                        [
-                                'Usuários',
-                                [
-                                    [
-                                       'link' => route('codeeduuser.users.index'),
-                                       'title' => 'Usuários'
-
-                                    ],
-                                    [
-                                        'link' => route('codeeduuser.roles.index'),
-                                        'title' => 'Papel de usuário'
-
-                                    ]
-                                ]
                         ]
+                    ]
 
 
-                ]);
+                    ]
+                ];
+
+                $links = Navigation::links(\NavbarAuthorization::getLinksAuthorized($arrayLinks));
+
+               // $links = Navigation::links($arrayLinks);
                 $logout = Navigation::links([
                         [
                                 Auth::user()->name,

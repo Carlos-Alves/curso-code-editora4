@@ -1,5 +1,5 @@
 <?php
-Route::group(['middleware' => ['auth', config('codeeduuser.middleware.isVerified')]], function (){
+Route::group(['middleware' => ['auth', config('codeeduuser.middleware.isVerified'), 'auth.resource']], function (){
 
     Route::resource('categories', 'CategoriesController', ['except' => 'show']);
 

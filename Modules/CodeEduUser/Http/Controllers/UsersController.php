@@ -7,12 +7,11 @@ use CodeEduUser\Http\Requests\UserRequest;
 use CodeEduUser\Repositories\RoleRepository;
 use CodeEduUser\Repositories\UserRepository;
 use Illuminate\Http\Request;
-use CodeEduUser\Annotations\Mapping\Controller as ControllerAnnotation;
-use CodeEduUser\Annotations\Mapping\Action as ActionAnnotation;
+use CodeEduUser\Annotations\Mapping as Permission;
 
 
 /**
- * @ControllerAnnotation(name="users-admin", description="Administração de usuários")
+ * @Permission\Controller(name="user-admin", description="Administração de usuários")
  *
  */
 class UsersController extends Controller
@@ -40,7 +39,7 @@ class UsersController extends Controller
 
     /**
      * Display a listing of the resource.
-     * @ActionAnnotation(name="list", description="Ver listagem de usuários")
+     * @Permission\Action(name="list", description="Ver listagem de usuários")
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -53,7 +52,7 @@ class UsersController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * @Permission\Action(name="store", description="Criar usuários")
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -64,7 +63,7 @@ class UsersController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @ActionAnnotation(name="list1111", description="Ver listagem de usuários")
+     * @Permission\Action(name="store", description="Criar usuários")
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -80,7 +79,7 @@ class UsersController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * @Permission\Action(name="update", description="Atualizar usuários")
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -93,7 +92,7 @@ class UsersController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * @Permission\Action(name="update", description="Atualizar usuários")
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -101,7 +100,7 @@ class UsersController extends Controller
     public function update(UserRequest $request, $id)
     {
         $data = $request->except(['password']);
-        $this->repository->update($request->all(),$id);
+        $this->repository->update($data, $id);
         $url = $request->get('redirect_to', route('codeeduuser.users.index'));
         $request->session()->flash('message', 'Usuário editado com sucesso.');
         return redirect()->to($url);
@@ -109,7 +108,7 @@ class UsersController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @Permission\Action(name="destroy", description="Excluir usuários")
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

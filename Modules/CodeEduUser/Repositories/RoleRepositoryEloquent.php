@@ -23,15 +23,6 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         return Role::class;
     }
 
-    public function update(array $attributes, $id)
-    {
-        $model = parent::update($attributes, $id);
-        if (isset($attributes['permissions'])){
-            $model->permissions()->sync($attributes['permissions']);
-        }
-        return $model;
-    }
-
 
     /**
      * Boot up the repository, pushing criteria
@@ -39,5 +30,15 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function updatePermissions(array $permissions, $id)
+    {
+        $model = $this->find($id);
+        $model->permissions()->detach();
+        if (count($permissions)){
+            $model->permissions()->sync($permissions);
+        }
+        return $model;
     }
 }

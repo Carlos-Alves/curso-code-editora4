@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-02-02.
+    * Generated on 2017-02-23.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -68,6 +68,9 @@ namespace PHPSTORM_META {
             'CodeEduBook\Repositories\BookRepository' instanceof \CodeEduBook\Repositories\BookRepositoryEloquent,
             'user.verification' instanceof \Jrean\UserVerification\UserVerification,
             'CodeEduUser\Repositories\UserRepository' instanceof \CodeEduUser\Repositories\UserRepositoryEloquent,
+            'CodeEduUser\Repositories\PermissionRepository' instanceof \CodeEduUser\Repositories\PermissionRepositoryEloquent,
+            'CodeEduUser\Repositories\RoleRepository' instanceof \CodeEduUser\Repositories\RoleRepositoryEloquent,
+            'Doctrine\Common\Annotations\Reader' instanceof \Doctrine\Common\Annotations\CachedReader,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
@@ -216,6 +219,9 @@ namespace PHPSTORM_META {
             'CodeEduBook\Repositories\BookRepository' instanceof \CodeEduBook\Repositories\BookRepositoryEloquent,
             'user.verification' instanceof \Jrean\UserVerification\UserVerification,
             'CodeEduUser\Repositories\UserRepository' instanceof \CodeEduUser\Repositories\UserRepositoryEloquent,
+            'CodeEduUser\Repositories\PermissionRepository' instanceof \CodeEduUser\Repositories\PermissionRepositoryEloquent,
+            'CodeEduUser\Repositories\RoleRepository' instanceof \CodeEduUser\Repositories\RoleRepositoryEloquent,
+            'Doctrine\Common\Annotations\Reader' instanceof \Doctrine\Common\Annotations\CachedReader,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
@@ -364,6 +370,9 @@ namespace PHPSTORM_META {
             'CodeEduBook\Repositories\BookRepository' instanceof \CodeEduBook\Repositories\BookRepositoryEloquent,
             'user.verification' instanceof \Jrean\UserVerification\UserVerification,
             'CodeEduUser\Repositories\UserRepository' instanceof \CodeEduUser\Repositories\UserRepositoryEloquent,
+            'CodeEduUser\Repositories\PermissionRepository' instanceof \CodeEduUser\Repositories\PermissionRepositoryEloquent,
+            'CodeEduUser\Repositories\RoleRepository' instanceof \CodeEduUser\Repositories\RoleRepositoryEloquent,
+            'Doctrine\Common\Annotations\Reader' instanceof \Doctrine\Common\Annotations\CachedReader,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
@@ -512,6 +521,9 @@ namespace PHPSTORM_META {
             'CodeEduBook\Repositories\BookRepository' instanceof \CodeEduBook\Repositories\BookRepositoryEloquent,
             'user.verification' instanceof \Jrean\UserVerification\UserVerification,
             'CodeEduUser\Repositories\UserRepository' instanceof \CodeEduUser\Repositories\UserRepositoryEloquent,
+            'CodeEduUser\Repositories\PermissionRepository' instanceof \CodeEduUser\Repositories\PermissionRepositoryEloquent,
+            'CodeEduUser\Repositories\RoleRepository' instanceof \CodeEduUser\Repositories\RoleRepositoryEloquent,
+            'Doctrine\Common\Annotations\Reader' instanceof \Doctrine\Common\Annotations\CachedReader,
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
