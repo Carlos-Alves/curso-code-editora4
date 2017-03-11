@@ -2,9 +2,7 @@
 
 namespace CodeEduBook\Models;
 
-use CodEditora\Models\Livro;
 use Bootstrapper\Interfaces\TableInterface;
-use CodeEduBook\Models\Book;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

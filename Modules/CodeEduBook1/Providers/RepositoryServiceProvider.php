@@ -2,6 +2,7 @@
 
 namespace CodeEduBook\Providers;
 
+
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -22,6 +23,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(\CodeEduBook\Repositories\CategoryRepository::class, \CodeEduBook\Repositories\CategoryRepositoryEloquent::class);
         $this->app->bind(\CodeEduBook\Repositories\BookRepository::class, \CodeEduBook\Repositories\BookRepositoryEloquent::class);
+        $this->app->bind(\CodeEduBook\Repositories\ChapterRepository::class, \CodeEduBook\Repositories\ChapterRepositoryEloquent::class);
 
     }
 

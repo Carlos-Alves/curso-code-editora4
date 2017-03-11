@@ -2,6 +2,9 @@
 
 namespace CodeEduBook\Http\Controllers;
 
+use CodeEduBook\Http\Requests\BookCoverRequest;
+use CodeEduBook\Models\Book;
+use CodeEduBook\Pub\BookCoverUpload;
 use CodeEduBook\Repositories\CategoryRepository;
 use CodeEduBook\Http\Requests\BookCreateRequest;
 use CodeEduBook\Http\Requests\BookUpdateRequest;
@@ -90,9 +93,8 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $book)
     {
-        $book = $this->repository->find($id);
         $this->categoryRepository->withTrashed();
         $categories = $this->categoryRepository->listsWithMutators('name_trashed', 'id');
         return view('codeedubook::books.edit', compact('book', 'categories'));
@@ -107,10 +109,11 @@ class BooksController extends Controller
      *
      * @return Response
      */
-    public function update(BookUpdateRequest $request, $id)
+    public function update(BookUpdateRequest $request, Book $book)
     {
         $data = $request->except(['author_id']);
-        $this->repository->update($data,$id);
+        $data['published'] = $request->get('published', false);
+        $this->repository->update($data,$book->id);
         $url = $request->get('redirect_to', route('books.index'));
         $request->session()->flash('message', 'Livro editado com sucesso.');
         return redirect()->to($url);
@@ -124,10 +127,31 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
-       $this->repository->delete($id);
+       $this->repository->delete($book->id);
         \Session()->flash('message', 'Livro excluído com sucesso.');
         return redirect()->to(\URL::previous());
+    }
+
+    /**
+     *
+     * @Permission\Action(name="cover", description="Cover livros")
+     * @param  Book $book
+     * @return \Illuminate\Http\Response
+     */
+    public function coverForm(Book $book){
+        return view('codeedubook::books.cover', compact('book'));
+    }
+
+    /**
+     * @Permission\Action(name="cover", description="Cover livros")
+     */
+    public function coverStore(BookCoverRequest $request, Book $book, BookCoverUpload $upload){
+
+        $upload->upload($book, $request->file('file'));
+        $url = $request->get('redirect_to', route('books.index'));
+        $request->session()->flash('message', 'Cover cadastrado com sucesso.');
+        return redirect()->to($url);
     }
 }

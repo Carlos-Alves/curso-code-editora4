@@ -30,7 +30,6 @@ $factory->state(\CodeEduUser\Models\User::class, 'author',function ($faker) {
 });
 
 $factory->define(\CodeEduBook\Models\Category::class, function (Faker\Generator $faker) {
-
     return [
         'name' => ucfirst($faker->unique()->word),
     ];
@@ -51,6 +50,18 @@ $factory->define(\CodeEduBook\Models\Book::class, function (Faker\Generator $fak
         'price' => $faker->randomFloat(2,10,100),
         'author_id'=> $authorId,
         'category_id' => $categoryId,
+        'dedication' => $faker->sentence,
+        'description' => $faker->paragraph,
+        'website' => $faker->url,
+        'percent_complete' => rand(0,100)
     ];
 });
 
+
+$factory->define(\CodeEduBook\Models\Chapter::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->sentence(2),
+        'content' => $faker->paragraph(10),
+    ];
+});

@@ -2,6 +2,8 @@
 
 namespace CodeEduBook\Providers;
 
+use CodeEduBook\Repositories\BookRepository;
+use CodeEduBook\Criteria\FindByAuthor;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -45,4 +47,17 @@ class RouteServiceProvider extends ServiceProvider
         //    require __DIR__ . '/Http/routes.php';
         // }
     }
+
+    public function boot()
+    {
+        parent::boot();
+
+        \Route::bind('book', function($value){
+            $bookRepository = app(BookRepository::class);
+            $bookRepository->pushCriteria(new FindByAuthor());
+            return $bookRepository->find($value);
+        });
+    }
+
+
 }

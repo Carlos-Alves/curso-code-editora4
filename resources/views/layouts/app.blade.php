@@ -115,5 +115,6 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+@stack('scripts')
 </body>
 </html>

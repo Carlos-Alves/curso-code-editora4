@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.30 on 2017-02-23.
+ * Generated for Laravel 5.3.30 on 2017-03-11.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -17515,6 +17515,20 @@ namespace CodeEduUser\Facade {
         }
         
     }         
+
+    class NavbarAuthorization {
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getLinksAuthorized($links)
+        {
+            return \CodeEduUser\Menu\Navbar::getLinksAuthorized($links);
+        }
+        
+    }         
 }
     
     
@@ -17637,6 +17651,8 @@ namespace {
     class UserVerification extends \Jrean\UserVerification\Facades\UserVerification {}
     
     class PermissionReader extends \CodeEduUser\Facade\PermissionReader {}
+    
+    class NavbarAuthorization extends \CodeEduUser\Facade\NavbarAuthorization {}
     
 }
 

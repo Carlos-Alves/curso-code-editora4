@@ -3,7 +3,7 @@
 namespace CodeEduBook\Models;
 
 use Bootstrapper\Interfaces\TableInterface;
-use CodeEduBook\Models\Category;
+use CodeEduBook\Models\Chapter;
 use CodeEduUser\Models\User;
 use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +15,8 @@ class Book extends Model implements TableInterface
     use TransformableTrait;
     use FormAccessible;
     use SoftDeletes;
+    use BookStorageTrait;
+    use BookThumbnailTrait;
 
     protected $dates = ['deleted_at'];
 
@@ -24,7 +26,12 @@ class Book extends Model implements TableInterface
         'subtitle',
         'price',
         'author_id',
-        'category_id'
+        'category_id',
+        'dedication',
+        'decription',
+        'website',
+        'percent_complete',
+        'published'
     ];
 
     public function author(){

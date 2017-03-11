@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-02-23.
+    * Generated on 2017-03-11.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -66,6 +66,7 @@ namespace PHPSTORM_META {
             'bootstrapper::thumbnail' instanceof \Bootstrapper\Thumbnail,
             'CodeEduBook\Repositories\CategoryRepository' instanceof \CodeEduBook\Repositories\CategoryRepositoryEloquent,
             'CodeEduBook\Repositories\BookRepository' instanceof \CodeEduBook\Repositories\BookRepositoryEloquent,
+            'CodeEduBook\Repositories\ChapterRepository' instanceof \CodeEduBook\Repositories\ChapterRepositoryEloquent,
             'user.verification' instanceof \Jrean\UserVerification\UserVerification,
             'CodeEduUser\Repositories\UserRepository' instanceof \CodeEduUser\Repositories\UserRepositoryEloquent,
             'CodeEduUser\Repositories\PermissionRepository' instanceof \CodeEduUser\Repositories\PermissionRepositoryEloquent,
@@ -217,6 +218,7 @@ namespace PHPSTORM_META {
             'bootstrapper::thumbnail' instanceof \Bootstrapper\Thumbnail,
             'CodeEduBook\Repositories\CategoryRepository' instanceof \CodeEduBook\Repositories\CategoryRepositoryEloquent,
             'CodeEduBook\Repositories\BookRepository' instanceof \CodeEduBook\Repositories\BookRepositoryEloquent,
+            'CodeEduBook\Repositories\ChapterRepository' instanceof \CodeEduBook\Repositories\ChapterRepositoryEloquent,
             'user.verification' instanceof \Jrean\UserVerification\UserVerification,
             'CodeEduUser\Repositories\UserRepository' instanceof \CodeEduUser\Repositories\UserRepositoryEloquent,
             'CodeEduUser\Repositories\PermissionRepository' instanceof \CodeEduUser\Repositories\PermissionRepositoryEloquent,
@@ -368,6 +370,7 @@ namespace PHPSTORM_META {
             'bootstrapper::thumbnail' instanceof \Bootstrapper\Thumbnail,
             'CodeEduBook\Repositories\CategoryRepository' instanceof \CodeEduBook\Repositories\CategoryRepositoryEloquent,
             'CodeEduBook\Repositories\BookRepository' instanceof \CodeEduBook\Repositories\BookRepositoryEloquent,
+            'CodeEduBook\Repositories\ChapterRepository' instanceof \CodeEduBook\Repositories\ChapterRepositoryEloquent,
             'user.verification' instanceof \Jrean\UserVerification\UserVerification,
             'CodeEduUser\Repositories\UserRepository' instanceof \CodeEduUser\Repositories\UserRepositoryEloquent,
             'CodeEduUser\Repositories\PermissionRepository' instanceof \CodeEduUser\Repositories\PermissionRepositoryEloquent,
@@ -519,6 +522,7 @@ namespace PHPSTORM_META {
             'bootstrapper::thumbnail' instanceof \Bootstrapper\Thumbnail,
             'CodeEduBook\Repositories\CategoryRepository' instanceof \CodeEduBook\Repositories\CategoryRepositoryEloquent,
             'CodeEduBook\Repositories\BookRepository' instanceof \CodeEduBook\Repositories\BookRepositoryEloquent,
+            'CodeEduBook\Repositories\ChapterRepository' instanceof \CodeEduBook\Repositories\ChapterRepositoryEloquent,
             'user.verification' instanceof \Jrean\UserVerification\UserVerification,
             'CodeEduUser\Repositories\UserRepository' instanceof \CodeEduUser\Repositories\UserRepositoryEloquent,
             'CodeEduUser\Repositories\PermissionRepository' instanceof \CodeEduUser\Repositories\PermissionRepositoryEloquent,

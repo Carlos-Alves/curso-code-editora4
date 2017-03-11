@@ -2,6 +2,7 @@
 
 namespace CodeEduBook\Providers;
 
+use Folklore\Image\ImageServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class CodeEduBookServiceProvider extends ServiceProvider
@@ -24,6 +25,7 @@ class CodeEduBookServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->publishMigrationsAndSeeders();
+        $this->publishAssets();
     }
 
     /**
@@ -36,6 +38,7 @@ class CodeEduBookServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
         $this->app->register(AuthServiceProvider::class);
+        $this->app->register(ImageServiceProvider::class);
 
     }
 
@@ -107,6 +110,17 @@ class CodeEduBookServiceProvider extends ServiceProvider
         ], 'seeders');
 
      }
+
+    public function publishAssets(){
+
+        $sourcePath = __DIR__ . '/../resources/assets/js';
+
+        $this->publishes([
+            $sourcePath => public_path('js')
+        ], 'assets');
+
+
+    }
 
     /**
      * Get the services provided by the provider.

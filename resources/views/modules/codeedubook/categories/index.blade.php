@@ -5,9 +5,9 @@
     <div class="container">
         <div class="row">
             <h3>Listagem de categorias</h3>
-            @can('users-admin/list')
+
             {!! Button::primary('Nova categoria')->asLinkTo(route('categories.create')) !!}
-            @endcan
+
         </div>
 
         @include('layouts._campo-busca', ['nomeDoCampo' => 'Pesquisa por nome'])
